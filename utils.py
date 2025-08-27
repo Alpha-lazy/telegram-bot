@@ -1,5 +1,5 @@
 """
-Utility functions for NSE OI Spurts Bot
+Utility functions for NSE Oi Spurts Bot
 Common helper functions and formatting utilities
 """
 

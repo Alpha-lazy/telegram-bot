@@ -1,6 +1,6 @@
 # Overview
 
-This is a Telegram bot that monitors NSE (National Stock Exchange) Options Interest (OI) spurts data from the official NSE India website. The bot automatically scrapes data at scheduled intervals during market hours (10:00 AM to 2:30 PM) and provides real-time stock market insights through Telegram commands and automated notifications.
+This is a Telegram bot that monitors NSE (National Stock Exchange) Options Interest (Oi) spurts data from the official NSE India website. The bot automatically scrapes data at scheduled intervals during market hours (10:00 AM to 2:30 PM) and provides real-time stock market insights through Telegram commands and automated notifications.
 
 The application downloads Excel files from NSE, processes the data to track stock movements and changes over time, and allows users to query this information through an interactive Telegram interface.
 

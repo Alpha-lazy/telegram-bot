@@ -1,6 +1,6 @@
 """
-NSE OI Spurts Web Scraper
-Handles downloading and parsing of NSE India OI spurts data
+NSE Oi Spurts Web Scraper
+Handles downloading and parsing of NSE India Oi spurts data
 """
 
 import asyncio
@@ -45,7 +45,7 @@ class NSEScraper:
         
     def scrape_oi_spurts_data(self) -> Optional[Dict]:
         """
-        Scrape OI spurts data from NSE website
+        Scrape Oi spurts data from NSE website
         Returns dict with scraped data or None if failed
         """
         try:

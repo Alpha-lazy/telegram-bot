@@ -1,5 +1,5 @@
 """
-Scheduler for NSE OI Spurts Bot
+Scheduler for NSE Oi Spurts Bot
 Handles automated data collection timing and task management
 """
 

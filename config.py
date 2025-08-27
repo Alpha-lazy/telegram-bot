@@ -11,7 +11,7 @@ class Config:
     # Bot Configuration
     BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "8095839692:AAGtMCXOuAcDURa-VmDDFrq3UXqzfBbaH1g")
     
-    # NSE Configuration
+    # NSE Oi Spurts Configuration
     NSE_OI_SPURTS_URL = "https://www.nseindia.com/market-data/oi-spurts"
     NSE_BASE_URL = "https://www.nseindia.com"
     

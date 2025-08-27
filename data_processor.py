@@ -1,5 +1,5 @@
 """
-Data Processor for NSE OI Spurts Bot
+Data Processor for NSE Oi Spurts Bot
 Handles Excel file processing, data extraction, and storage
 """
 
@@ -18,7 +18,7 @@ from utils import normalize_stock_name, calculate_time_difference
 logger = logging.getLogger(__name__)
 
 class DataProcessor:
-    """Handles processing and storage of NSE OI spurts data"""
+    """Handles processing and storage of NSE Oi spurts data"""
     
     def __init__(self):
         self.config = Config()

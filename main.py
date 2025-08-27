@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-NSE OI Spurts Telegram Bot - Main Entry Point
-Monitors NSE India OI Spurts data and provides Telegram bot interface
+NSE Oi Spurts Telegram Bot - Main Entry Point
+Monitors NSE India Oi Spurts data and provides Telegram bot interface
 """
 
 import asyncio
@@ -46,7 +46,7 @@ class NSEOIBot:
     async def start(self):
         """Start the bot and scheduler"""
         try:
-            logger.info("🚀 Starting NSE OI Spurts Telegram Bot...")
+            logger.info("🚀 Starting NSE Oi Spurts Telegram Bot...")
             
             # Set up signal handlers for graceful shutdown
             signal.signal(signal.SIGINT, self.signal_handler)
