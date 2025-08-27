@@ -28,8 +28,8 @@ class TelegramBotHandler:
         self.application = None
         self.data_processor = DataProcessor()
         
-    async def start(self):
-        """Start the Telegram bot"""
+    def start(self):
+        """Start the Telegram bot using run_polling"""
         try:
             # Create application
             self.application = Application.builder().token(self.bot_token).build()
@@ -37,12 +37,10 @@ class TelegramBotHandler:
             # Add handlers
             self._add_handlers()
             
-            # Start the bot
-            await self.application.initialize()
-            await self.application.start()
-            await self.application.updater.start_polling()
+            logger.info("🤖 Starting Telegram bot with polling...")
             
-            logger.info("🤖 Telegram bot started successfully")
+            # Start the bot with run_polling (this is blocking and handles event loop)
+            self.application.run_polling()
             
         except Exception as e:
             logger.error(f"❌ Failed to start Telegram bot: {e}")
@@ -51,9 +49,7 @@ class TelegramBotHandler:
     async def stop(self):
         """Stop the Telegram bot"""
         if self.application:
-            await self.application.updater.stop()
-            await self.application.stop()
-            await self.application.shutdown()
+            # run_polling handles shutdown automatically
             logger.info("🤖 Telegram bot stopped")
     
     def _add_handlers(self):

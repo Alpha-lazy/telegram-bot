@@ -12,6 +12,7 @@ import sys
 from datetime import datetime
 from threading import Thread
 import time
+import threading
 
 from bot_handler import TelegramBotHandler
 from scheduler import DataScheduler
@@ -43,7 +44,7 @@ class NSEOIBot:
         logger.info(f"Received signal {signum}. Shutting down gracefully...")
         self.running = False
         
-    async def start(self):
+    def start(self):
         """Start the bot and scheduler"""
         try:
             logger.info("🚀 Starting NSE Oi Spurts Telegram Bot...")
@@ -58,20 +59,18 @@ class NSEOIBot:
             scheduler_thread = Thread(target=self.run_scheduler, daemon=True)
             scheduler_thread.start()
             
-            # Start the Telegram bot
-            await self.bot_handler.start()
+            logger.info("📈 Starting data scheduler...")
+            
+            # Start the Telegram bot (this is blocking with run_polling)
+            self.bot_handler.start()
             
             logger.info("✅ Bot started successfully!")
-            
-            # Keep the main thread alive
-            while self.running:
-                await asyncio.sleep(1)
                 
         except Exception as e:
             logger.error(f"❌ Error starting bot: {e}")
             raise
         finally:
-            await self.stop()
+            self.stop()
             
     def run_scheduler(self):
         """Run the data scheduler in a separate thread"""
@@ -83,21 +82,21 @@ class NSEOIBot:
         except Exception as e:
             logger.error(f"❌ Scheduler error: {e}")
             
-    async def stop(self):
+    def stop(self):
         """Stop the bot and cleanup"""
         logger.info("🛑 Stopping bot...")
         try:
-            await self.bot_handler.stop()
+            self.bot_handler.stop()
             self.scheduler.stop()
         except Exception as e:
             logger.error(f"❌ Error during shutdown: {e}")
         logger.info("✅ Bot stopped successfully")
 
-async def main():
+def main():
     """Main entry point"""
     try:
         bot = NSEOIBot()
-        await bot.start()
+        bot.start()
     except KeyboardInterrupt:
         logger.info("🛑 Bot interrupted by user")
     except Exception as e:
@@ -109,4 +108,4 @@ if __name__ == "__main__":
     os.makedirs("data", exist_ok=True)
     
     # Run the bot
-    asyncio.run(main())
+    main()
